@@ -1,0 +1,9 @@
+{
+  "id_paciente": "PAC-2026-001",
+  "nombre": "Anonimo_Ficticio_01",
+  "edad": "45",
+  "sexo": "M",
+  "estudio": "Laparoscopia Senhance",
+  "fecha": "2026-11-10",
+  "diagnostico_ia": "Incision abdominal limpia - Sin desgarro tisular"
+}
