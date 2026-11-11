@@ -2,123 +2,232 @@
 
 **Proyecto:** Sistema Asistido por Robot Quirúrgico Senhance  
 **Desarrollador:** Diego Alejandro García García  
+**Miniproyecto:** #3 – Ingeniería Biomédica  
 **Año:** 2026
+
+---
 
 ## 1. Introducción
 
-SimulatorSenhance es un entorno virtual desarrollado en Unity que permite simular la manipulación de brazos robóticos quirúrgicos mediante un control inalámbrico DualShock 4.
+SimulatorSenhance es un entorno virtual de simulación quirúrgica desarrollado en Unity, inspirado en el sistema robótico Senhance de Asensus Surgical.
 
-Esta guía describe las principales funciones del simulador, los controles utilizados y el procedimiento para obtener y analizar imágenes del entorno quirúrgico.
+El proyecto permite manipular brazos robóticos, controlar instrumentos quirúrgicos y realizar procedimientos simulados mediante un control inalámbrico DualShock 4.
 
-## 2. Requisitos
+Adicionalmente, incorpora herramientas para capturar imágenes, generar estudios DICOM, realizar análisis experimentales mediante inteligencia artificial y visualizar los resultados desde un Mini-PACS local.
 
-- Computadora compatible con Unity.
-- Proyecto SimulatorSenhance.
+Esta guía explica el funcionamiento general del simulador y sus principales herramientas.
+
+## 2. Requisitos del sistema
+
+### Hardware
+
+- Computadora compatible con Unity 6.
 - Control DualShock 4 (PS4).
-- Conexión Bluetooth o USB compatible.
-- Python con OpenCV y MediaPipe para ejecutar los módulos experimentales de visión artificial.
+- Conexión Bluetooth o USB.
+- Espacio de almacenamiento para capturas y estudios.
+
+### Software
+
+- Unity Hub y Unity 6.
+- Python con las dependencias indicadas en `src/api/requirements.txt`.
+- Weasis para visualizar archivos DICOM.
+- Proyecto SimulatorSenhance.
+
+Para instalar y configurar los componentes, consultar el [Documento Técnico](docs/documento_tecnico.md).
 
 ## 3. Inicio del simulador
 
-1. Abrir el proyecto SimulatorSenhance desde Unity Hub.
-2. Esperar a que Unity cargue los recursos y la escena principal.
-3. Conectar el control DualShock 4.
-4. Verificar que el control sea reconocido por el sistema.
-5. Presionar Play en Unity para iniciar la simulación.
+1. Abrir Unity Hub.
+2. Seleccionar el proyecto SimulatorSenhance.
+3. Abrir la escena `OperatingRoom_Main`.
+4. Conectar el DualShock 4 mediante Bluetooth o USB.
+5. Verificar que el mando sea reconocido.
+6. Presionar **Play** para iniciar la simulación.
 
-Una vez iniciada la escena, el usuario puede manipular los brazos robóticos y visualizar el entorno quirúrgico.
+Una vez iniciada la escena, se puede manipular el sistema robótico dentro del entorno quirúrgico.
 
-## 4. Controles del sistema
+![Entorno quirúrgico virtual](docs/img/01_simulador.png)
 
-El simulador utiliza un DualShock 4 para controlar los brazos quirúrgicos y la cámara laparoscópica.
+*Figura 1. Entorno quirúrgico virtual de SimulatorSenhance.*
+
+## 4. Controles del DualShock 4
+
+El sistema permite controlar los brazos quirúrgicos y alternar con la cámara laparoscópica.
 
 | Control | Función |
 |---|---|
-| Joystick izquierdo | Desplazamiento del brazo izquierdo |
-| Joystick derecho | Desplazamiento del brazo derecho |
-| L1 (mantener) | Habilitar desplazamiento vertical del brazo izquierdo |
-| R1 (mantener) | Habilitar desplazamiento vertical del brazo derecho |
-| L2 | Control de la pinza izquierda en modo brazo |
-| R2 | Control de la pinza derecha en modo brazo |
-| Cruceta abajo | Alternar modo precisión del brazo izquierdo |
-| Botón X | Alternar modo precisión del brazo derecho |
+| Joystick izquierdo | Movimiento del brazo izquierdo |
+| Joystick derecho | Movimiento del brazo derecho |
+| L1 (mantener) | Habilitar desplazamiento vertical izquierdo |
+| R1 (mantener) | Habilitar desplazamiento vertical derecho |
+| L2 | Control de pinza izquierda en modo brazo |
+| R2 | Control de pinza derecha en modo brazo |
+| Cruceta abajo | Alternar precisión del brazo izquierdo |
+| Botón X | Alternar precisión del brazo derecho |
 | Cruceta izquierda | Alternar entre brazo izquierdo y cámara |
 | Botón Triángulo | Alternar entre brazo derecho y cámara |
 | Touchpad | Retorno a posición HOME |
 
-El sistema también incorpora funciones de paro de emergencia y control mediante cinemática inversa.
+El simulador también incorpora funciones de paro de emergencia virtual y cinemática inversa.
 
-## 5. Funcionamiento de los brazos robóticos
+## 5. Manipulación de brazos robóticos
 
-Los brazos quirúrgicos permiten realizar movimientos controlados dentro del entorno virtual.
+Los joysticks permiten controlar los movimientos de los brazos izquierdo y derecho.
 
-El usuario puede manipular ambos brazos mediante los joysticks del DualShock 4, respetando las restricciones de movimiento establecidas en la simulación.
+Cada lado del mando controla su brazo correspondiente, facilitando la manipulación simultánea de instrumentos.
 
-El modo de precisión permite reducir la velocidad de desplazamiento para realizar movimientos más controlados.
+El modo de precisión reduce la velocidad de movimiento para realizar ajustes más controlados.
 
-## 6. Control de la cámara laparoscópica
+Los movimientos están sujetos a restricciones de alcance y límites articulares definidos dentro de la simulación.
 
-El simulador incorpora una cámara virtual que permite observar el entorno quirúrgico.
+![Control robótico](docs/img/02_control.png)
 
-Al activar el modo cámara, el joystick correspondiente deja de controlar el brazo y pasa a controlar la cámara.
+*Figura 2. Manipulación de instrumentos quirúrgicos.*
 
-Durante este modo, los gatillos correspondientes se destinan al control de iluminación, mientras que el brazo y su pinza permanecen sin recibir órdenes de movimiento de ese lado.
+## 6. Control de cámara laparoscópica
 
-El otro lado del control puede continuar manipulando su brazo.
+El simulador permite alternar entre el control de los brazos y el control de la cámara virtual.
 
-## 7. Captura de imágenes
+Cuando se activa el modo cámara desde uno de los lados del mando:
+
+- El joystick correspondiente deja de controlar el brazo.
+- El joystick pasa a controlar la cámara.
+- El gatillo correspondiente se utiliza para controlar la iluminación.
+- La pinza de ese lado deja de recibir órdenes de apertura o cierre.
+- El otro lado del mando puede continuar controlando su brazo.
+
+Para regresar al control del brazo, se utiliza nuevamente el botón de alternancia correspondiente.
+
+## 7. Manipulación y sutura simulada
+
+El sistema incorpora herramientas para interactuar con objetos y tejidos virtuales.
+
+Los instrumentos permiten realizar acciones de aproximación, sujeción y liberación.
+
+También se implementó una secuencia experimental de sutura y aproximación de bordes de tejido.
+
+![Sutura quirúrgica](docs/img/03_sutura.png)
+
+*Figura 3. Simulación de manipulación y sutura quirúrgica.*
+
+## 8. Captura de imágenes
 
 El simulador permite generar capturas del entorno quirúrgico desde Unity.
 
-Las imágenes se almacenan en la carpeta:
+Estas imágenes se almacenan localmente en Windows, dentro del directorio:
 
 ```text
 AppData/LocalLow/DefaultCompany/
 SimulatorSenhance/CapturasLaparoscopicas/
 ```
 
-Estas capturas pueden utilizarse para pruebas de procesamiento digital de imágenes.
+Las capturas se utilizan como entrada para los módulos de almacenamiento DICOM y procesamiento de imágenes.
 
-## 8. Procesamiento de imágenes
+## 9. Mini-PACS y gestión de estudios
 
-Se desarrollaron scripts en Python que permiten analizar las imágenes obtenidas desde Unity.
+Se desarrolló una aplicación gráfica local que permite consultar los estudios DICOM generados por el simulador.
 
-Entre las funciones experimentales se incluyen:
+### 9.1 Abrir el Mini-PACS
 
-- Localización aproximada de regiones abdominales.
-- Identificación de zonas oscuras y rojizas.
-- Detección de contornos de incisiones.
-- Cálculo de centros y dimensiones en píxeles.
-- Estimación de orientación de la incisión.
-- Reconocimiento de puntos corporales mediante MediaPipe.
+Una vez configurado el entorno Python, ejecutar el módulo `visor_dicom.py`.
 
-Para ejecutar los módulos, se debe disponer de las dependencias correspondientes y configurar las rutas de las imágenes.
+La aplicación presenta una tabla de estudios y un resumen con la cantidad de pacientes, estudios e imágenes archivadas.
 
-Ejemplo de ejecución:
+![Mini-PACS](docs/img/04_pacs.png)
 
-```bash
-python detectar_pose.py
-```
+*Figura 4. Interfaz principal del Mini-PACS.*
 
-El reconocimiento corporal mediante MediaPipe fue probado experimentalmente, obteniendo puntos de referencia de hombros y caderas.
+### 9.2 Funciones principales
 
-## 9. Capturas de pantalla
+| Función | Descripción |
+|---|---|
+| Actualizar | Busca y actualiza los estudios disponibles |
+| Ver metadatos | Muestra la información del archivo DICOM |
+| Visualizar en Weasis | Abre el estudio seleccionado en Weasis |
+| Ver imágenes IA | Permite ejecutar o consultar el análisis correspondiente |
+| Ver informe del estudio | Abre el informe PDF asociado al estudio |
 
-En esta sección se incorporarán evidencias visuales del funcionamiento del simulador:
+### 9.3 Consultar un estudio
 
-- Entorno quirúrgico tridimensional.
-- Brazos robóticos y paciente.
-- Control de cámara laparoscópica.
-- Capturas generadas desde Unity.
-- Resultados del procesamiento de imágenes.
-- Detección corporal mediante MediaPipe.
+1. Abrir el Mini-PACS.
+2. Presionar **Actualizar** para cargar los estudios disponibles.
+3. Seleccionar el estudio deseado.
+4. Utilizar los botones inferiores para consultar su información.
 
-Las imágenes se almacenarán en `docs/img/`.
+Cada estudio se identifica mediante sus datos de paciente, fecha y cantidad de imágenes.
 
-## 10. Limitaciones
+## 10. Procesamiento de imágenes mediante IA
 
-El proyecto constituye un prototipo académico.
+El sistema integra herramientas experimentales desarrolladas con MediaPipe y OpenCV.
 
-Las funciones de procesamiento de imágenes e inteligencia artificial se encuentran en fase experimental y pueden presentar variaciones dependiendo de la posición de la cámara, la iluminación y las características de la escena.
+### 10.1 Reconocimiento anatómico
 
-No debe utilizarse para procedimientos quirúrgicos reales, diagnóstico ni decisiones clínicas.
+MediaPipe permite identificar puntos corporales de referencia, como hombros y caderas.
+
+A partir de estos puntos se calcula una región abdominal aproximada.
+
+![Reconocimiento abdominal](docs/img/05_ia_abdomen.png)
+
+*Figura 5. Identificación de referencias corporales y delimitación abdominal.*
+
+### 10.2 Detección de incisión
+
+OpenCV permite analizar regiones oscuras y rojizas para identificar posibles incisiones.
+
+El procesamiento incluye operaciones de segmentación, filtrado y extracción de contornos.
+
+![Detección de incisión](docs/img/06_ia_incision.png)
+
+*Figura 6. Resultado experimental de detección de incisión quirúrgica.*
+
+### 10.3 Consultar resultados
+
+1. Seleccionar un estudio en el Mini-PACS.
+2. Presionar **Ver imágenes IA**.
+3. Ejecutar el análisis cuando sea necesario, utilizando la opción disponible en la aplicación.
+4. Revisar las imágenes generadas.
+5. Utilizar los controles de navegación para alternar entre resultados.
+
+Los resultados incluyen la delimitación abdominal y la identificación de la región candidata de incisión.
+
+## 11. Informes quirúrgicos PDF
+
+El sistema permite generar informes automáticos a partir de los resultados del procesamiento.
+
+Los documentos contienen información del paciente simulado, identificación de la captura, metodología, imágenes y mediciones aproximadas.
+
+### Consultar un informe
+
+1. Abrir el Mini-PACS.
+2. Seleccionar el estudio correspondiente.
+3. Presionar **Ver informe del estudio**.
+4. Revisar las páginas del documento.
+5. Utilizar la opción de descarga para guardar una copia cuando sea necesario.
+
+![Informe PDF](docs/img/07_pdf.png)
+
+*Figura 7. Ejemplo de informe quirúrgico generado automáticamente.*
+
+## 12. Recomendaciones de uso
+
+- Verificar la conexión del DualShock 4 antes de iniciar.
+- Comprobar que Unity y los módulos Python estén configurados correctamente.
+- Utilizar el modo de precisión para movimientos delicados.
+- Revisar el estudio seleccionado antes de consultar imágenes o informes.
+- Interpretar los resultados de IA únicamente como pruebas experimentales.
+
+## 13. Limitaciones
+
+SimulatorSenhance es un prototipo académico.
+
+La simulación no reproduce todas las condiciones de un procedimiento quirúrgico real.
+
+El análisis de imágenes puede presentar variaciones según la perspectiva, iluminación y características visuales de la escena.
+
+El Mini-PACS funciona como una herramienta local de gestión de estudios simulados y no sustituye un sistema clínico certificado.
+
+**El proyecto no está destinado a procedimientos médicos reales, diagnóstico ni tratamiento de pacientes.**
+
+---
+
+**SimulatorSenhance – Ingeniería Biomédica, 2026.**
