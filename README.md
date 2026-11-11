@@ -59,7 +59,7 @@ El proyecto integra los siguientes componentes:
 5. **Mini-PACS:** archivado, consulta y visualización de estudios.
 6. **Informes:** generación y consulta de resultados en PDF.
 
-**[INSERTAR IMAGEN: docs/arquitectura.png]**
+![Arquitectura del sistema SimulatorSenhance](docs/arquitectura.png)
 
 *Figura 2. Arquitectura de integración del sistema SimulatorSenhance.*
 
