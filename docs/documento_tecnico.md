@@ -9,15 +9,19 @@
 
 ## 1. Introducción
 
-SimulatorSenhance es un prototipo de simulación quirúrgica desarrollado en Unity, inspirado en el sistema robótico Senhance de Asensus Surgical.
+## 1. Introducción
 
-El proyecto integra un entorno tridimensional, brazos robóticos articulados, instrumentos quirúrgicos, controles inalámbricos y herramientas de procesamiento digital de imágenes.
+SimulatorSenhance es un prototipo académico de simulación quirúrgica desarrollado en Unity, inspirado en el sistema robótico Senhance de Asensus Surgical.
 
-Su propósito es representar el funcionamiento de un sistema de cirugía asistida por robot y explorar la integración de tecnologías de simulación, control y visión artificial.
+El proyecto integra un entorno quirúrgico tridimensional, brazos robóticos articulados, instrumentos laparoscópicos y un sistema de control mediante DualShock 4, permitiendo simular movimientos y procedimientos quirúrgicos.
 
-## 2. Arquitectura general del sistema
+Adicionalmente, se desarrolló un sistema complementario en Python que permite gestionar las imágenes obtenidas desde Unity, organizar estudios en formato DICOM y realizar análisis experimentales mediante inteligencia artificial y procesamiento digital de imágenes.
 
-El sistema se divide en cuatro componentes principales:
+Para visualizar los resultados, se implementó un Mini-PACS local que permite consultar estudios, visualizar imágenes mediante Weasis, revisar los resultados del análisis quirúrgico y acceder a informes generados automáticamente en formato PDF.
+
+El propósito del proyecto es integrar conocimientos de robótica, programación, simulación médica y visión artificial en una plataforma educativa que represente diferentes etapas de un procedimiento quirúrgico asistido por robot.
+
+**SimulatorSenhance tiene fines exclusivamente académicos y no está diseñado para uso clínico real.**
 
 ### 2.1 Entorno virtual
 
