@@ -81,11 +81,11 @@ Se implementaron funciones de:
 - Interacción con objetos e instrumental quirúrgico.
 - Simulación de procedimientos de sutura.
 
-**[INSERTAR IMAGEN: docs/img/02_control.png]**
+![Control de brazos robóticos](docs/img/02_control.png)
 
 *Figura 3. Manipulación de instrumentos robóticos dentro del simulador.*
 
-**[INSERTAR IMAGEN: docs/img/03_sutura.png]**
+![Simulación quirúrgica](docs/img/03_sutura.png)
 
 *Figura 4. Simulación del procedimiento de sutura quirúrgica.*
 
@@ -116,11 +116,11 @@ Entre los resultados obtenidos se incluyen:
 - Estimación del ancho, alto y área en píxeles.
 - Almacenamiento de resultados asociados a cada captura.
 
-**[INSERTAR IMAGEN: docs/img/05_ia_abdomen.png]**
+![Reconocimiento abdominal](docs/img/05_ia_abdomen.png)
 
 *Figura 5. Identificación de referencias anatómicas y delimitación abdominal.*
 
-**[INSERTAR IMAGEN: docs/img/06_ia_incision.png]**
+![Detección de incisión](docs/img/06_ia_incision.png)
 
 *Figura 6. Detección experimental de una región de incisión mediante OpenCV.*
 
@@ -141,7 +141,7 @@ La interfaz permite:
 - Consultar las imágenes procesadas correspondientes a cada estudio.
 - Visualizar y guardar informes PDF.
 
-**[INSERTAR IMAGEN: docs/img/04_pacs.png]**
+![Mini-PACS](docs/img/04_pacs.png)
 
 *Figura 7. Interfaz principal del mini-PACS SimulatorSenhance.*
 
@@ -153,7 +153,7 @@ Los documentos incluyen información del paciente simulado, procedimiento, metod
 
 Cuando se identifica un candidato de incisión, el informe incorpora las mediciones obtenidas por el algoritmo, incluyendo centro, dimensiones y área.
 
-**[INSERTAR IMAGEN: docs/img/07_pdf.png]**
+![Informe quirúrgico](docs/img/07_pdf.png)
 
 *Figura 8. Informe de análisis quirúrgico generado automáticamente.*
 
