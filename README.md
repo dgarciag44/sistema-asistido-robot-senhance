@@ -215,7 +215,7 @@ Entre los resultados principales destacan:
 
 ## 9. Video demostrativo
 
-**Video del funcionamiento:** pendiente de incorporar el enlace de YouTube.
+**[Ver video demostrativo de SimulatorSenhance](https://github.com/dgarciag44/sistema-asistido-robot-senhance/releases/tag/v1.0.0)**
 
 La demostración incluirá el control robótico, la interacción con el entorno quirúrgico, la captura DICOM, el análisis mediante inteligencia artificial y la visualización de resultados en el mini-PACS.
 
