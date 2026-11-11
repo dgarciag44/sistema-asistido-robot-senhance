@@ -21,7 +21,7 @@ El sistema permite integrar las capturas generadas en Unity con su correspondien
 
 El proyecto tiene fines exclusivamente académicos y de simulación.
 
-**[INSERTAR IMAGEN: docs/img/01_simulador.png]**
+![Entorno quirúrgico virtual SimulatorSenhance](docs/img/01_simulador.png)
 
 *Figura 1. Entorno quirúrgico virtual desarrollado en Unity.*
 
