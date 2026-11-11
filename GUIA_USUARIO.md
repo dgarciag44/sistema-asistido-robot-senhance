@@ -50,25 +50,51 @@ Una vez iniciada la escena, se puede manipular el sistema robótico dentro del e
 
 *Figura 1. Entorno quirúrgico virtual de SimulatorSenhance.*
 
+
 ## 4. Controles del DualShock 4
 
-El sistema permite controlar los brazos quirúrgicos y alternar con la cámara laparoscópica.
+El sistema utiliza controles independientes y simétricos para los brazos izquierdo y derecho, además del control de cámara laparoscópica y cambio de vistas.
 
-| Control | Función |
+### 4.1. Movimiento de los brazos robóticos
+
+| Función | Brazo izquierdo | Brazo derecho |
+|---|---|---|
+| Movimiento horizontal (X) y profundidad (Z) | Joystick izquierdo | Joystick derecho |
+| Movimiento vertical (Y) | L1 + joystick izquierdo | R1 + joystick derecho |
+| Apertura y cierre de pinza | L2 | R2 |
+| Modo precisión | Cruceta abajo | Botón X |
+| Elevar el sistema o brazo | Cruceta arriba | Triángulo |
+| Bajar el sistema o brazo | L1 + cruceta arriba | R1 + Triángulo |
+| Acercar o alejar la pinza | Cruceta derecha | Cuadrado |
+
+### 4.2. Control de cámara laparoscópica
+
+| Función | Lado izquierdo | Lado derecho |
+|---|---|---|
+| Alternar entre brazo y cámara | Cruceta izquierda | Círculo |
+| Movimiento de cámara | Joystick izquierdo | Joystick derecho |
+| Control de iluminación | L2 | R2 |
+| Regresar al control del brazo | Cruceta izquierda | Círculo |
+
+**Nota:** Al activar el modo cámara, el brazo y la pinza del lado seleccionado dejan de recibir órdenes de movimiento. El otro brazo puede continuar funcionando.
+
+### 4.3. Captura de imágenes
+
+| Función | Lado izquierdo | Lado derecho |
+|---|---|---|
+| Capturar fotografía laparoscópica | L1 + L3 | R1 + R3 |
+
+### 4.4. Cambio de vistas
+
+| Vista | Control |
 |---|---|
-| Joystick izquierdo | Movimiento del brazo izquierdo |
-| Joystick derecho | Movimiento del brazo derecho |
-| L1 (mantener) | Habilitar desplazamiento vertical izquierdo |
-| R1 (mantener) | Habilitar desplazamiento vertical derecho |
-| L2 | Control de pinza izquierda en modo brazo |
-| R2 | Control de pinza derecha en modo brazo |
-| Cruceta abajo | Alternar precisión del brazo izquierdo |
-| Botón X | Alternar precisión del brazo derecho |
-| Cruceta izquierda | Alternar entre brazo izquierdo y cámara |
-| Botón Triángulo | Alternar entre brazo derecho y cámara |
-| Touchpad | Retorno a posición HOME |
+| Vista de cámara laparoscópica | Touchpad |
+| Vista general del escenario quirúrgico | L1 + Touchpad o R1 + Touchpad |
+| Vista del operador | Options |
+| Vista del médico de pie frente al monitor | Share |
 
-El simulador también incorpora funciones de paro de emergencia virtual y cinemática inversa.
+**Nota general:** Los controles de ambos brazos están distribuidos de manera simétrica. El simulador permite manipular los brazos de forma simultánea y alternar individualmente entre control robótico y cámara laparoscópica.
+
 
 ## 5. Manipulación de brazos robóticos
 
